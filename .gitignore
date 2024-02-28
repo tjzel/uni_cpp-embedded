@@ -2,3 +2,5 @@
 build/
 *.dsym
 *.o
+*.zip
+.DS_Store
