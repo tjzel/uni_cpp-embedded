@@ -4,3 +4,5 @@ build/
 *.o
 *.zip
 .DS_Store
+*.out
+*.expected

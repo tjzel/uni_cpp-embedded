@@ -38,6 +38,9 @@ Matrix::Matrix(Matrix &&matrix) {
 }
 
 Matrix &Matrix::operator=(Matrix &&matrix) {
+  if (this == &matrix) {
+    return *this;
+  }
   std::cout << "Matrix move assignment" << std::endl;
   N = std::exchange(matrix.N, 0);
   M = std::exchange(matrix.M, 0);
