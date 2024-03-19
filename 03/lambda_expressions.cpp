@@ -105,20 +105,19 @@ int main() {
   ///  container. Try to use std::accumulate algorithm with another lambda
   ///  expression to implement it.
 
-  // How to make it work?
-  // auto l1_norm = []<typename Container>(Container &container) ->
-  //     typename decltype(container)::value_type {
-  //       using ElementType = decltype(container)::value_type;
-  //       return std::accumulate(
-  //           container.begin(), container.end(), 0,
-  //           [](ElementType sum, ElementType elem) { return sum + abs(y); });
-  //     }; // [ 5 ]
+  auto l1_norm = []<typename Container>(Container &container) ->
+      typename Container::value_type {
+        using ElementType = typename Container::value_type;
+        return std::accumulate(
+            container.begin(), container.end(), 0,
+            [](ElementType sum, ElementType elem) { return sum + abs(elem); });
+      }; // [ 5 ]
 
-  auto l1_norm = [](auto &container) {
-    return std::accumulate(
-        container.begin(), container.end(), 0.0,
-        [](auto sum, auto elem) { return sum + fabs(elem); });
-  };
+  // auto l1_norm = [](auto &container) {
+  //   return std::accumulate(
+  //       container.begin(), container.end(), 0.0,
+  //       [](auto sum, auto elem) { return sum + fabs(elem); });
+  // };
 
   std::cout << "l1 norm (v) : " << l1_norm(v) << std::endl;
   assert(l1_norm(v) == 1050);
