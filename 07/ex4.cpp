@@ -116,12 +116,14 @@ public:
   typedef OperationNode<N, Vector<N>, Vector<N>,
                         SubtractOperation<N, Vector<N>, Vector<N>>>
       SubtractNode;
+
   friend SubtractNode operator-(const Vector<N> &left, const Vector<N> &right) {
     return SubtractNode(left, right);
   }
 
   typedef OperationNode<N, Vector<N>, int, MultiplyOperation<N, Vector<N>>>
       MultiplyNode;
+
   friend MultiplyNode operator*(const Vector<N> &left, const int right) {
     return MultiplyNode(left, right);
   }
