@@ -8,11 +8,11 @@ int cube(int x) { return x * x * x; }
 
 template <typename... Ts> double average(Ts... args) {
   const size_t length = sizeof...(args);
-  return (... + args) / (double)length;
+  return (0.0 + ... + args) / (double)length;
 }
 
 template <typename F, typename... Ts> double computeSum(F f, Ts... args) {
-  return (... + f(args));
+  return (0.0 + ... + f(args));
 }
 
 template <typename Container, typename... Ts>

@@ -45,6 +45,8 @@ public:
 int main() {
 
   MultiVector<int, string, double> m;
+  int x = 1;
+  m.push_back(x);
   m.push_back(5);
   m.push_back(string("text"));
   m.push_back(7);
