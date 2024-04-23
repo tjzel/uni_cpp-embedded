@@ -105,31 +105,29 @@ public:
     return out;
   }
 
-  friend OperationNode<N, Vector<N>, Vector<N>,
-                       AddOperation<N, Vector<N>, Vector<N>>>
-  operator+(const Vector<N> &left, const Vector<N> &right) {
-    return OperationNode<N, Vector<N>, Vector<N>,
-                         AddOperation<N, Vector<N>, Vector<N>>>(left, right);
+  typedef OperationNode<N, Vector<N>, Vector<N>,
+                        AddOperation<N, Vector<N>, Vector<N>>>
+      AddNode;
+
+  friend AddNode operator+(const Vector<N> &left, const Vector<N> &right) {
+    return AddNode(left, right);
   }
 
-  friend OperationNode<N, Vector<N>, Vector<N>,
-                       SubtractOperation<N, Vector<N>, Vector<N>>>
-  operator-(const Vector<N> &left, const Vector<N> &right) {
-    return OperationNode<N, Vector<N>, Vector<N>,
-                         SubtractOperation<N, Vector<N>, Vector<N>>>(left,
-                                                                     right);
+  typedef OperationNode<N, Vector<N>, Vector<N>,
+                        SubtractOperation<N, Vector<N>, Vector<N>>>
+      SubtractNode;
+  friend SubtractNode operator-(const Vector<N> &left, const Vector<N> &right) {
+    return SubtractNode(left, right);
   }
 
-  friend OperationNode<N, Vector<N>, int, MultiplyOperation<N, Vector<N>>>
-  operator*(const Vector<N> &left, const int right) {
-    return OperationNode<N, Vector<N>, int, MultiplyOperation<N, Vector<N>>>(
-        left, right);
+  typedef OperationNode<N, Vector<N>, int, MultiplyOperation<N, Vector<N>>>
+      MultiplyNode;
+  friend MultiplyNode operator*(const Vector<N> &left, const int right) {
+    return MultiplyNode(left, right);
   }
 
-  friend OperationNode<N, Vector<N>, int, MultiplyOperation<N, Vector<N>>>
-  operator*(const int left, const Vector<N> &right) {
-    return OperationNode<N, Vector<N>, int, MultiplyOperation<N, Vector<N>>>(
-        right, left);
+  friend MultiplyNode operator*(const int left, const Vector<N> &right) {
+    return MultiplyNode(right, left);
   }
 };
 
