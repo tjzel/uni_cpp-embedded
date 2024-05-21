@@ -13,7 +13,7 @@ class Vector;
 
 template <typename T> class vector_traits {
 public:
-  typedef const T &&GetSetType;
+  typedef const T &GetSetType;
   typedef T ScalarType;
 
   static GetSetType mult(ScalarType scalar, GetSetType value) {
