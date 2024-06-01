@@ -4,13 +4,13 @@
 #include <iomanip>
 #include <iostream>
 
-template <int Head, int... Rest> struct IntegerList;
+template <int... Rest> struct IntegerList;
 
 template <int Index, typename List> struct getInt;
 
 template <typename List> struct Max;
 
-template <int Head, int... Rest> struct IntegerList {
+template <int Head, int... Rest> struct IntegerList<Head, Rest...> {
   typedef IntegerList<Rest...> RestList;
   static constexpr int value = Head;
 
